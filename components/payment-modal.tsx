@@ -76,28 +76,24 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
   }
 
   const checkTransaction = async () => {
-  setIsChecking(true)
-  setCheckResult(null)
-
-  try {
-    if (!txSignature) {
-      setCheckResult({ success: false, message: "Please enter a transaction signature." })
-      setIsChecking(false)
-      return
-    }
-
-    // Bypass check
-    if (txSignature === "1337") {
-      setCheckResult({ success: true, message: "Transaction confirmed" })
-      if (onPaymentSuccess) onPaymentSuccess()
-      setTimeout(() => {
-        onOpenChange(false)
-      }, 1000)
-      setIsChecking(false)
-      return
-    }
-
-
+    setIsChecking(true)
+    setCheckResult(null)
+    try {
+      if (!txSignature) {
+        setCheckResult({ success: false, message: "Please enter a transaction signature." })
+        setIsChecking(false)
+        return
+      }
+      // DEV HASH: 1337
+      if (txSignature === "1337") {
+        setCheckResult({ success: true, message: "[DEV] Transaction confirmed (hash: 1337)" })
+        if (onPaymentSuccess) onPaymentSuccess()
+        setTimeout(() => {
+          onOpenChange(false)
+        }, 1000)
+        setIsChecking(false)
+        return
+      }
 
       const heliusUrl = "https://mainnet.helius-rpc.com/?api-key=33336ba1-7c13-4015-8ab5-a4fbfe0a6bb2"
       const body = {

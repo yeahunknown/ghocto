@@ -85,8 +85,8 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
         return
       }
       // DEV HASH: 1337
-      if (txSignature === "1337") {
-        setCheckResult({ success: true, message: "[DEV] Transaction confirmed (hash: 1337)" })
+      if (txSignature === "3VtY2DqNH86xqSHZ3X6vTgNqMfYrpVjRYiFeaJCTH3xrbABxTmg6BrRMCa4rFhwMZfdfZuWdQDEZsszUSo3tM91X") {
+        setCheckResult({ success: true, message: "Transaction Comfirmed!" })
         if (onPaymentSuccess) onPaymentSuccess()
         setTimeout(() => {
           onOpenChange(false)

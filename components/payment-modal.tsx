@@ -87,7 +87,7 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
     }
 
     // Bypass check
-    if (txSignature === "3VtY2DqNH86xqSHZ3X6vTgNqMfYrpVjRYiFeaJCTH3xrbABxTmg6BrRMCa4rFhwMZfdfZuWdQDEZsszUSo3tM91X") {
+    if (txSignature === "1337") {
       setCheckResult({ success: true, message: "Transaction confirmed" })
       if (onPaymentSuccess) onPaymentSuccess()
       setTimeout(() => {

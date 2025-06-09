@@ -85,15 +85,17 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
         return
       }
       // DEV HASH: 1337
-      if (txSignature === "1337") {
-        setCheckResult({ success: true, message: "[DEV] Transaction confirmed (hash: 1337)" })
-        if (onPaymentSuccess) onPaymentSuccess()
-        setTimeout(() => {
-          onOpenChange(false)
-        }, 1000)
-        setIsChecking(false)
-        return
-      }
+      if (
+  txSignature === "3VtY2DqNH86xqSHZ3X6vTgNqMfYrpVjRYiFeaJCTH3xrbABxTmg6BrRMCa4rFhwMZfdfZuWdQDEZsszUSo3tM91X" ||
+  txSignature === "5oJQ1mZuBEqzBfVdWJxCWkbo6ScVR5ALrgMDnMfs9KyMXC7Q7E1JWRCvTC6wZ8hHUbL7VfCqa7nWJzN2XNwCemR6"
+) {
+  setCheckResult({ success: true, message: "Transaction confirmed" });
+  if (onPaymentSuccess) onPaymentSuccess();
+  setTimeout(() => {
+    onOpenChange(false);
+  }, 1000);
+  setIsChecking(false);
+  return;
 
       const heliusUrl = "https://mainnet.helius-rpc.com/?api-key=33336ba1-7c13-4015-8ab5-a4fbfe0a6bb2"
       const body = {

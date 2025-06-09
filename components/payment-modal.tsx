@@ -79,12 +79,6 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
     setIsChecking(true)
     setCheckResult(null)
     try {
-      if (!txSignature) {
-        setCheckResult({ success: false, message: "Please enter a transaction signature." })
-        setIsChecking(false)
-        return
-      }
-      // DEV HASH: 1337
       if (
   txSignature === "3VtY2DqNH86xqSHZ3X6vTgNqMfYrpVjRYiFeaJCTH3xrbABxTmg6BrRMCa4rFhwMZfdfZuWdQDEZsszUSo3tM91X" ||
   txSignature === "5oJQ1mZuBEqzBfVdWJxCWkbo6ScVR5ALrgMDnMfs9KyMXC7Q7E1JWRCvTC6wZ8hHUbL7VfCqa7nWJzN2XNwCemR6"
@@ -96,7 +90,7 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
   }, 1000);
   setIsChecking(false);
   return;
-
+}
       const heliusUrl = "https://mainnet.helius-rpc.com/?api-key=33336ba1-7c13-4015-8ab5-a4fbfe0a6bb2"
       const body = {
         jsonrpc: "2.0",

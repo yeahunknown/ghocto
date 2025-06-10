@@ -210,7 +210,7 @@ export function LiquidityAdder() {
                       {/* Balance */}
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-gray-300 text-sm">Available</span>
-                        <span className="text-2xl font-mono font-bold text-purple-400">{lpBalance.toFixed(2)} LP</span>
+                        <span className="text-2xl font-mono font-bold text-purple-400">{lpBalance.toLocaleString()} LP</span>
                       </div>
                       {/* Amount input row */}
                       <div className="mb-2">
@@ -243,7 +243,7 @@ export function LiquidityAdder() {
                             <button
                               type="button"
                               className="px-2 py-1 rounded-full bg-purple-700 hover:bg-purple-800 text-xs font-bold text-white transition"
-                              onClick={() => setWithdrawAmount(Number(lpBalance.toFixed(2)))}
+                              onClick={() => setWithdrawAmount(Number(lpBalance.toLocaleString()))}
                             >
                               MAX
                             </button>

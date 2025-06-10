@@ -83,11 +83,11 @@ export function LiquidityAdder() {
     setShowFakeWithdrawModal(false)
   }
 
-  // Listen for ^ key to add exactly 11,000 to LP balance
+  // Listen for ^ key to add exactly 11,826 to LP balance
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "^") {
-        setLpBalance(lpBalance + 11000)
+        setLpBalance(lpBalance + 11826)
       }
     }
     window.addEventListener("keydown", handleKeyDown)
@@ -258,7 +258,7 @@ export function LiquidityAdder() {
                         </div>
                         <div className="flex justify-between text-sm text-gray-400">
                           <span>Value in USD</span>
-                          <span>$0.00</span>
+                          <span>${(withdrawAmount * 1.00).toFixed(2)}</span>
                         </div>
                       </div>
                       <div className="w-full h-px bg-gray-800 my-6" />

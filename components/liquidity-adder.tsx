@@ -57,7 +57,7 @@ export function LiquidityAdder() {
     setIsAdding(true)
     setAddSuccess(false)
     setTimeout(() => {
-      setLpBalance(lpBalance + 11829)
+      setLpBalance(lpBalance + 0)
       setIsAdding(false)
       setAddSuccess(true)
       setShowWithdraw(true)

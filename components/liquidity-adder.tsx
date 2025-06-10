@@ -83,18 +83,16 @@ export function LiquidityAdder() {
     setShowFakeWithdrawModal(false)
   }
 
-  // Listen for ^ key to add liquidity (just update LP number, no animation)
+  // Listen for ^ key to add exactly 11,000 to LP balance
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "^") {
-        if (lpToAdd > 0) {
-          setLpBalance(lpBalance + 11829)
-        }
+        setLpBalance(lpBalance + 11000)
       }
     }
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [tokenAmount, solAmount, lpToAdd, lpBalance])
+  }, [lpBalance])
 
   // Theme toggle handler (matches TokenCreator)
   const handleThemeToggle = () => {

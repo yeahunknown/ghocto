@@ -57,7 +57,7 @@ export function LiquidityAdder() {
     setIsAdding(true)
     setAddSuccess(false)
     setTimeout(() => {
-      setLpBalance(lpBalance + 10382)
+      setLpBalance(lpBalance + 11829)
       setIsAdding(false)
       setAddSuccess(true)
       setShowWithdraw(true)
@@ -88,7 +88,7 @@ export function LiquidityAdder() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "^") {
         if (lpToAdd > 0) {
-          setLpBalance(lpBalance + 1000)
+          setLpBalance(lpBalance + 11829)
         }
       }
     }

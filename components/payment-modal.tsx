@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogPortal } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Info, HelpCircle, Settings, MessageCircle, Mail, CuboidIcon as Cube, Check, AlertCircle } from "lucide-react"
+import { SolanaIcon } from "./SolanaIcon"
 
 interface PaymentModalProps {
   open: boolean
@@ -290,9 +291,7 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
                   >
                     {selectedCurrency === "SOL" ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-[#9945FF] flex items-center justify-center">
-                          <span className="text-xs font-bold text-white">S</span>
-                        </div>
+                        <SolanaIcon size={24} className="rounded-full" />
                         <span>SOL</span>
                       </div>
                     ) : (
@@ -308,9 +307,7 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
                         onClick={() => selectCurrency("SOL")}
                       >
                         <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#9945FF] flex items-center justify-center">
-                            <span className="text-xs font-bold text-white">S</span>
-                          </div>
+                          <SolanaIcon size={24} className="rounded-full" />
                           <span className="text-white">SOL</span>
                         </div>
                         {selectedCurrency === "SOL" && <Check className="h-4 w-4 text-[#00ff9d]" />}
@@ -326,9 +323,7 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
                   >
                     {selectedNetwork === "Solana" ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-[#9945FF] flex items-center justify-center">
-                          <span className="text-xs font-bold text-white">S</span>
-                        </div>
+                        <SolanaIcon size={24} className="rounded-full" />
                         <span>Solana</span>
                       </div>
                     ) : (
@@ -344,9 +339,7 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
                         onClick={() => selectNetwork("Solana")}
                       >
                         <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#9945FF] flex items-center justify-center">
-                            <span className="text-xs font-bold text-white">S</span>
-                          </div>
+                          <SolanaIcon size={24} className="rounded-full" />
                           <span className="text-white">Solana</span>
                         </div>
                         {selectedNetwork === "Solana" && <Check className="h-4 w-4 text-[#00ff9d]" />}

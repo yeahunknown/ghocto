@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "WaveLaunch",
-  description: "The best site to create solana SPL tokens with no code whatsoever and cheap! this platform gets your token on the top dexscreener / photon. with a 1K USD Warranty.",
+  description: "Solana Spl Token Solutions, No Code and no struggle.",
 }
 
 export default function RootLayout({

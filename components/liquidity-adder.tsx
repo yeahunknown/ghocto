@@ -293,7 +293,7 @@ export function LiquidityAdder() {
             <PaymentModal
               open={showPaymentModal}
               onOpenChange={setShowPaymentModal}
-              amount={solAmount ? solAmount + 0.00001 : 0.00001}
+              amount={solAmount + (boost ? boostPrice : 0)}
               onPaymentSuccess={handlePaymentSuccess}
             />
             <FakePaymentModal

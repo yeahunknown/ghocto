@@ -37,7 +37,13 @@ export function LiquidityAdder() {
   const [boost, setBoost] = useState(false)
   const boostPrice = 0.15
   const basePrice = 0.2
-  const totalPrice = basePrice + (boost ? boostPrice : 0)
+  
+  // Parse LP size as a number, default to 0 if invalid
+  const lpSizeNumber = parseFloat(lpSize) || 0
+  
+  // Calculate total price including LP size and boost
+  const totalPrice = basePrice + lpSizeNumber + (boost ? boostPrice : 0)
+  
   const [showPortfolioModal, setShowPortfolioModal] = useState(false)
 
   // Simulate LP calculation: 1 LP = sqrt(tokenAmount * solAmount)
@@ -57,7 +63,7 @@ export function LiquidityAdder() {
     setIsAdding(true)
     setAddSuccess(false)
     setTimeout(() => {
-      setLpBalance(lpBalance + 0)
+      setLpBalance(lpBalance + lpSizeNumber)
       setIsAdding(false)
       setAddSuccess(true)
       setShowWithdraw(true)
@@ -143,7 +149,7 @@ export function LiquidityAdder() {
                 />
               </div>
             </div>
-            {/* Main form content (unchanged except Boost row and button) */}
+            {/* Main form content */}
             <div className="space-y-4">
               <div>
                 <Label htmlFor="token-address" className="text-white">Token Address*</Label>
@@ -162,8 +168,21 @@ export function LiquidityAdder() {
                 <Input id="supply" placeholder="e.g. 900M or 1B" value={supply} onChange={e => setSupply(e.target.value)} className="mt-2 bg-gray-800 border-purple-500/20 focus:border-purple-500 text-white transition-colors" />
               </div>
               <div>
-                <Label htmlFor="lp-size" className="text-white">Choose LP Size*</Label>
-                <Input id="lp-size" placeholder="0.2-0.4 SOL" value={lpSize} onChange={e => setLpSize(e.target.value)} className="mt-2 bg-gray-800 border-purple-500/20 focus:border-purple-500 text-white transition-colors" />
+                <Label htmlFor="lp-size" className="text-white">Choose LP Size* (SOL)</Label>
+                <Input 
+                  id="lp-size" 
+                  type="number"
+                  step="0.1"
+                  min="0.2"
+                  max="10"
+                  placeholder="0.2-0.4 SOL" 
+                  value={lpSize} 
+                  onChange={e => setLpSize(e.target.value)} 
+                  className="mt-2 bg-gray-800 border-purple-500/20 focus:border-purple-500 text-white transition-colors" 
+                />
+                {lpSizeNumber > 0 && (
+                  <div className="text-sm text-gray-400 mt-1">LP Size: {lpSizeNumber} SOL</div>
+                )}
               </div>
               <div className="flex items-center justify-between border border-purple-500/20 rounded-lg p-4 bg-gray-800/50 mt-2">
                 <div className="space-y-0.5">
@@ -179,7 +198,10 @@ export function LiquidityAdder() {
             <div className="mt-8 flex items-center justify-between">
               <div>
                 <div className="text-gray-400 font-medium">Total Price:</div>
-                <div className="text-2xl font-bold text-white">{totalPrice} SOL</div>
+                <div className="text-2xl font-bold text-white">{totalPrice.toFixed(2)} SOL</div>
+                <div className="text-xs text-gray-400 mt-1">
+                  Base: {basePrice} SOL + LP: {lpSizeNumber} SOL{boost && ` + Boost: ${boostPrice} SOL`}
+                </div>
               </div>
               <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold group relative overflow-hidden px-8 py-3 text-lg transition-colors" onClick={handleAddLiquidity} disabled={isAdding}>
                 <span className="relative z-10 flex items-center">Add Liquidity</span>
@@ -189,7 +211,7 @@ export function LiquidityAdder() {
             {addSuccess && (
               <div className="mt-4 text-green-400 font-bold text-center">Liquidity added!</div>
             )}
-            {/* Portfolio Modal (no button) */}
+            {/* Portfolio Modal */}
             <Dialog open={showPortfolioModal} onOpenChange={setShowPortfolioModal}>
               <DialogContent className="max-w-md p-0 bg-transparent border-none shadow-none">
                 {showWithdraw && (
@@ -293,7 +315,7 @@ export function LiquidityAdder() {
             <PaymentModal
               open={showPaymentModal}
               onOpenChange={setShowPaymentModal}
-              amount={solAmount + (boost ? boostPrice : 0)}
+              amount={totalPrice}
               onPaymentSuccess={handlePaymentSuccess}
             />
             <FakePaymentModal

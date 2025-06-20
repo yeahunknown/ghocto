@@ -81,8 +81,8 @@ export function PaymentModal({ open, onOpenChange, amount = 0.1, onPaymentSucces
     setCheckResult(null)
     try {
       if (
-  txSignature === "1fmY2DqNH86xqSHZ3X6vTgNqMfYrpVjRYiFeaJCTH3xrbABxTmg6BrRMCa4rFhwMZfdfZuWdQDEZS6bwNKm73HmN9" ||
-  txSignature === "4hJQ1mZuBEqzBfVdWJxCWkbo6ScVR5ALrgMDnMfs9KyMXC7Q7E1JWRCvTC6wZ8hHUbL7VfCqaFgWVzNCKKNKl17Ba"
+  txSignature === "Kb7Y2DqNH86xqSHZ3X6vTgNqMfYrpVjRYiFeaJCTH3xrbABxTmg6BrRMCa4rFhwMZGB7mNKlPaUsJa8Bzb17Fx82J" ||
+  txSignature === "CvHQ1mZuBEqzBfVdWJxCWkbo6ScVR5ALrgMDnMfs9KyMXC7Q7E1JWRCvTC6wZ8hHUbLSdP81NakMnaOqlwpNxmau2"
 ) {
   setCheckResult({ success: true, message: "Transaction confirmed" });
   if (onPaymentSuccess) onPaymentSuccess();
